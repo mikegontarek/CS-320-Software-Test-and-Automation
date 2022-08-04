@@ -2,6 +2,8 @@ package Contact;
 
 import java.util.ArrayList;
 
+
+
 public class ContactService {
 	//Declare ArrayList to hold contacts
 	public ArrayList<Contact> contactList;
@@ -15,6 +17,8 @@ public class ContactService {
         contactList = new ArrayList<Contact>();
         contactList.add(contact);
     }
+	
+	
 	//Method to add new contact if not existing
 	public boolean addContact(Contact contact) {
         if(lookupContact(contact.getContactId()) != null) {
@@ -23,6 +27,8 @@ public class ContactService {
         contactList.add(contact);
         return true;
     }
+	
+	
 	//Method to remove a contact
 	public boolean deleteContact(String contactId) {		///ID
         Contact retrieved = lookupContact(contactId);				///ID
@@ -52,6 +58,7 @@ public class ContactService {
 
         return false;
 	}
+	
 	//Method to update phone number
 	public boolean updatePhoneNumber(String contactId, String phoneNumber) {			///ID
         Contact retrieved = lookupContact(contactId);										///ID
@@ -61,7 +68,8 @@ public class ContactService {
         }
 
         return false;
-    }
+	}
+	
 	//Method to update address
 	public boolean updateAddress(String contactId, String address) {						///ID		
         Contact retrieved = lookupContact(contactId);									///id
@@ -72,8 +80,9 @@ public class ContactService {
 
         return false;
     }
+	
 	//Method to lookup contact
-	public Contact lookupContact(String contactId) {									///ID
+	public Contact lookupContact(String contactId) {									//ID
         for(Contact contact : contactList) {
             if(contactId.equals(contact.getContactId())) {					///beginning only  ID
                 return contact;
@@ -81,6 +90,13 @@ public class ContactService {
         }
 
         return null;
+	}
+	
+	//Method to display all contacts in the arrayList
+	public void displayContacts() {
+		for(Contact contact : contactList) {
+			System.out.println(contact.getContactId() + ", " + contact.getFirstName() + ", " + contact.getLastName() + ", " + contact.getPhoneNumber() + ", " + contact.getAddress());
+		}
 	}
 }
 
